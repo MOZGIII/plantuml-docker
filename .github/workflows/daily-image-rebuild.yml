@@ -1,0 +1,13 @@
+name: Daily Image Rebuild
+
+on:
+  schedule:
+    - cron:  '0 8 * * *'
+
+jobs:
+  test:
+    name: Daily Image Rebuild
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger rebuild
+        run: curl -X POST "$DOCKER_BUILD_TRIGGER_URL"
